@@ -1,0 +1,21 @@
+{
+    "name": "dasturchiuz/yii2-chatroom",
+    "description": "Chat room for online shop",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension"," chat"," chat room"," chats"," yii2 chats"," yii2-chat"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dasturchiuz",
+            "email": "dasturchiuz@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "dasturchiuz\\chatroom\\": ""
+        }
+    }
+}
