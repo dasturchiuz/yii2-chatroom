@@ -12,6 +12,6 @@ class NewMessageCount extends \yii\base\Widget
     public function run()
     {
           $data=Messages::find()->where(['receiver_id'=>$this->userID, 'is_new'=>1])->count();
-         return $data > 0 ? '<span class="badge badge-danger">'.$data.'</span>' : '';
+         return !empty($data) && $data > 0 ? '<span class="badge badge-danger">'.$data.'</span>' : '';
     }
 }
