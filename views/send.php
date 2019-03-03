@@ -26,7 +26,7 @@ use yii\helpers\Html;
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <?php $form = ActiveForm::begin() ?>
+                    <?php $form = ActiveForm::begin(['id'=>'sendmessageform']) ?>
 
                     <?= $form->field($model, 'receiver_id')->hiddenInput(['value' => $receiverID])->label(false) ?>
                     <?= $form->field($model, 'text')->textarea()->label(false) ?>
@@ -49,7 +49,7 @@ use yii\helpers\Html;
 
 <?php
 $js = <<<JS
-    $('form').on('beforeSubmit', function(e) {
+    $('#sendmessageform').on('beforeSubmit', function(e) {
       console.log($(this).serialize());
       $.ajax({
         url : '/messages/chat-room/sendmessage',
