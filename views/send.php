@@ -10,8 +10,8 @@ use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 
 ?>
-   <p class="text-info text-center"> <i class="fa fa-envelope" aria-hidden="true"></i>
-<?=\yii\helpers\Html::a('Отправить сообщение', ['#'], ['data-toggle'=>"modal", 'class'=>'font-weight-bold ', 'data-target'=>"#sendMessage"])?></p>
+   <p class="<?=$txtclass?>"> <i class="fa fa-envelope" aria-hidden="true"></i>
+<?=\yii\helpers\Html::a($txt, ['#'], ['data-toggle'=>"modal", 'class'=>'font-weight-bold ', 'data-target'=>"#sendMessage"])?></p>
     
     
     <div class="modal fade" id="sendMessage">
