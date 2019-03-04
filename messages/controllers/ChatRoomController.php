@@ -38,4 +38,13 @@ class ChatRoomController  extends Controller
         }
     }
 
+    public function actionLogo($user_id)
+    {
+        $model=\app\models\Profile::findOne($user_id);
+        if(!empty($model->logo))
+            return $model->logo->logo;
+        else
+            return \Yii::$app->response->sendFile(\Yii::getAlias("@app")."/web/images/default-avatar.png")->send();
+    }
+
 }

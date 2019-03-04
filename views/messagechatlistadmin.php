@@ -42,7 +42,7 @@ echo GridView::widget([
                 'class'=>'col-4'
             ],
             'value'=>function($data)use ($user_id){
-    //return $user_id;
+                //return $user_id;
                 return $data->sender_id == $user_id ? $data->receiver->username : $data->sender->username;
             }
         ],
@@ -57,7 +57,7 @@ echo GridView::widget([
             'format'=>'html',
             'value'=>function($data) use($user_id, $read_link){
 
-                return \yii\helpers\Html::a(substr($data->text, 0, 100), [$read_link, 'chat_room'=>$data->chatroom_id, 'id'=>$data->sender_id == $user_id ? $data->receiver_id : $data->sender_id], ['class'=>'text-info']);
+                return \yii\helpers\Html::a(substr($data->text, 0, 100), [$read_link, 'chat_room'=>$data->chatroom_id, 'id'=>$data->sender_id == $user_id ? $data->receiver_id : $data->sender_id, 'user_id'=>$user_id], ['class'=>'text-info']);
 
             }
         ],

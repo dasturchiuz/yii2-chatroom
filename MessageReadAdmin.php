@@ -6,7 +6,7 @@ use dasturchiuz\chatroom\models\Messages;
 use yii\data\ActiveDataProvider;
 use dasturchiuz\chatroom\ChatRoomAsset;
 
-class MessagesReadList extends \yii\base\Widget
+class MessageReadAdmin extends \yii\base\Widget
 {
     public $userID;
     public $clientID;
@@ -20,13 +20,7 @@ class MessagesReadList extends \yii\base\Widget
     public function run()
     {
         ChatRoomAsset::register($this->getView());
-        $shart=Messages::find()->where(['or',
-            ['sender_id'=>$this->userID],
-            ['receiver_id'=>$this->userID]
-        ])->andWhere(['chatroom_id'=>$this->chatRoom])->exists();
-        if(!$shart){
-            return $this->render('empty');
-        }
+
         $chats=Messages::find()->where(['or',
             ['sender_id'=>$this->userID,'sender_id'=>$this->clientID, ],
             ['receiver_id'=>$this->userID,'receiver_id'=>$this->clientID, ]
@@ -39,12 +33,6 @@ class MessagesReadList extends \yii\base\Widget
             ]
         ]);
 
-//        foreach ($chats->andWhere(['is_new'=>0])->all() as $item){
-//            if($item->receiver_id==$this->userID){
-//                $item->is_new=0;
-//                $item->save(false);
-//            }
-//        }
         $pagesize = $dataProvider->pagination->pageSize;// it will give Per Page data.
 
         $total = $dataProvider->totalCount; //total records // 15
@@ -59,6 +47,6 @@ class MessagesReadList extends \yii\base\Widget
             return $this->render('empty');
         }
         $modelMessage=new Messages();
-        return $this->render('messageread', ['dataProvider' => $dataProvider, 'user_id'=>$this->userID, 'clientID'=>$this->clientID, 'profile'=>$profile, 'modelMessage'=>$modelMessage, 'chatRoom'=>$this->chatRoom]);
+        return $this->render('messagereadadmin', ['dataProvider' => $dataProvider, 'user_id'=>$this->userID, 'clientID'=>$this->clientID, 'profile'=>$profile, 'modelMessage'=>$modelMessage, 'chatRoom'=>$this->chatRoom]);
     }
 }

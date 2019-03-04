@@ -5,7 +5,7 @@ namespace dasturchiuz\chatroom;
 use dasturchiuz\chatroom\models\Messages;
 use yii\data\ActiveDataProvider;
 
-class MessagesList extends \yii\base\Widget
+class MessageListAdmin extends \yii\base\Widget
 {
     public $userID;
     public $chatRoom;
@@ -20,8 +20,9 @@ class MessagesList extends \yii\base\Widget
             ])->groupBy('chatroom_id'),
             'pagination' => [
                 'pageSize'=>20
-            ]
+            ],
+            'sort' => ['defaultOrder' => ['created_at' => SORT_DESC]],
         ]);
-        return $this->render('messagechatlist', ['dataProvider' => $dataProvider, 'user_id'=>$this->userID, 'read_link'=>$this->read_link]);
+        return $this->render('messagechatlistadmin', ['dataProvider' => $dataProvider, 'user_id'=>$this->userID, 'read_link'=>$this->read_link]);
     }
 }
